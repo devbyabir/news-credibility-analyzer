@@ -1,0 +1,69 @@
+{
+  "debug_run": true,
+  "note": "debug runs use tiny subsets and are NOT a benchmark",
+  "model_name": "csebuetnlp/banglabert",
+  "sizes": {
+    "fit": 64,
+    "val": 32,
+    "test": 32
+  },
+  "hyperparameters": {
+    "model_name": "csebuetnlp/banglabert",
+    "preprocessor": "robust",
+    "max_length": 128,
+    "epochs": 3.0,
+    "batch_size": 8,
+    "lr": 2e-05,
+    "val_fraction": 0.1,
+    "max_rows": 3000,
+    "max_train_samples": 64,
+    "max_eval_samples": 32,
+    "max_steps": 4
+  },
+  "best_val_macro_f1": 0.42857142857142855,
+  "test": {
+    "n": 32,
+    "accuracy": 0.84375,
+    "balanced_accuracy": 0.5,
+    "macro_f1": 0.4576271186440678,
+    "per_class": {
+      "fake": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 5
+      },
+      "authentic": {
+        "precision": 0.84375,
+        "recall": 1.0,
+        "f1": 0.9152542372881356,
+        "support": 27
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "fake (0)",
+        "authentic (1)"
+      ],
+      "rows_are": "true label",
+      "matrix": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          27
+        ]
+      ]
+    },
+    "roc_auc": 0.6000000000000001,
+    "pr_auc_fake": 0.44512820512820517,
+    "fake_prevalence": 0.15625
+  },
+  "train_minutes": 0.25,
+  "device": "cpu",
+  "latency_single_article_ms_median": 87.32405000409926,
+  "artifact_size_mb": 443.5,
+  "torch": "2.15.0+cpu"
+}

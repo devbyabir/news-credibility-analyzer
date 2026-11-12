@@ -24,7 +24,7 @@ dependencies = [
 [project.optional-dependencies]
 app = ["gradio>=5,<7"]
 dev = ["pytest>=8", "ruff>=0.6"]
-finetune = ["torch>=2.4", "transformers>=4.45,<6", "accelerate>=1.0"]
+finetune = ["torch>=2.4", "transformers>=5.0,<6", "accelerate>=1.0"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
