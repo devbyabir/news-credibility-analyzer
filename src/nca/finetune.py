@@ -42,7 +42,7 @@ def build_splits(cfg: dict, raw_path: Path, val_fraction: float, max_rows: int |
 
 def main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--config", type=Path, default=PROJECT_ROOT / "configs" / "baseline.json")
+    ap.add_argument("--config", type=Path, default=PROJECT_ROOT / "configs" / "robust.json")
     ap.add_argument("--raw", type=Path, default=DEFAULT_RAW_PATH)
     ap.add_argument("--model-name", default="csebuetnlp/banglabert")
     ap.add_argument("--output-dir", type=Path, default=PROJECT_ROOT / "artifacts" / "banglabert")
