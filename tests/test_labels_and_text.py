@@ -23,7 +23,7 @@ def test_tokenizer_keeps_bangla_words_whole():
 
 
 def test_normalize_removes_source_typography_artifacts():
-    a = normalize_text("আহত।এরপর পুলিশ 25 জন পে‌য়াজ")
+    a = normalize_text("আহত।এরপর\u00a0পুলিশ 25 জন পে\u200cয়াজ")
     b = normalize_text("আহত । এরপর পুলিশ ২৫ জন পেয়াজ")
     assert a == b
 
@@ -44,3 +44,16 @@ def test_bangla_ratio():
     assert bangla_ratio("বাংলা") == 1.0
     assert bangla_ratio("english only") == 0.0
     assert 0 < bangla_ratio("বাংলা and english") < 1
+
+
+def test_robust_preprocessor_masks_shortcut_cues():
+    from nca.text import normalize_robust
+
+    raw = "ঢাকা, ১২ সেপ্টেম্বর ২০১৮ (বিডি-প্রতিদিন/এএম): করোনাভাইরাস নিয়ে চট্টগ্রাম মতিনিধি জানান 25 জন!"
+    out = normalize_robust(raw)
+    for cue in ("২০১৮", "১২", "২৫", "/", "(", "বিডি", "করোনা", "মতিনিধি"):
+        assert cue not in out
+    # article content and stylistic punctuation survive
+    for kept in ("ঢাকা", "সেপ্টেম্বর", "চট্টগ্রাম", "প্রতিনিধি", "জানান", "!"):
+        assert kept in out
+    assert normalize_robust(out) == out

@@ -13,7 +13,7 @@ from sklearn.naive_bayes import ComplementNB
 from sklearn.pipeline import Pipeline
 from sklearn.svm import LinearSVC
 
-from nca.text import normalize_text, tokenize
+from nca.text import PREPROCESSORS, tokenize
 
 # Models whose scores we expose in the product must provide predict_proba.
 PROBABILISTIC_MODELS = {"logreg", "complementnb", "dummy"}
@@ -22,9 +22,10 @@ PROBABILISTIC_MODELS = {"logreg", "complementnb", "dummy"}
 def make_vectorizer(spec: dict[str, Any]) -> TfidfVectorizer:
     spec = dict(spec)
     analyzer = spec.pop("analyzer", "word")
+    preprocessor = PREPROCESSORS[spec.pop("preprocessor", "standard")]
     ngram = tuple(spec.pop("ngram_range", (1, 1)))
     common = dict(
-        preprocessor=normalize_text,
+        preprocessor=preprocessor,
         lowercase=False,
         ngram_range=ngram,
         dtype=np.float32,
