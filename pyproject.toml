@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-app = ["gradio>=5,<7"]
+app = ["gradio>=5,<7", "streamlit>=1.40,<2"]
 dev = ["pytest>=8", "ruff>=0.6"]
 finetune = ["torch>=2.4", "transformers>=5.0,<6", "accelerate>=1.0"]
 

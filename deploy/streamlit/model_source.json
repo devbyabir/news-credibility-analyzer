@@ -1,0 +1,8 @@
+{
+  "_comment": "Where the Streamlit app downloads the trained model. Upload artifacts/model/model.joblib and artifacts/model/metadata.json to a GitHub Release tagged v1.0.0, then replace <your-github-username>. The checksums pin the exact files trained by `python -m nca.train --config configs/robust.json`; regenerate them with `python scripts/model_checksums.py` after retraining.",
+  "base_url": "https://github.com/<your-github-username>/news-credibility-analyzer/releases/download/v1.0.0",
+  "sha256": {
+    "model.joblib": "88148c0b98a29e48f5f5155f92dbba8e2780763010d702c6f86d2c5f795f976c",
+    "metadata.json": "e9dd516ee972856d11d37eb690a4a69fc554481738edcb52dda68b854b42dfc3"
+  }
+}
