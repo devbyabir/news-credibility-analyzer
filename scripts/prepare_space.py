@@ -45,7 +45,9 @@ def main() -> None:
     shutil.copy2(ROOT / "deploy" / "huggingface" / "README.md", args.out / "README.md")
     shutil.copy2(model, args.out / "artifacts" / "model" / "model.joblib")
     shutil.copy2(meta, args.out / "artifacts" / "model" / "metadata.json")
-    (args.out / ".gitattributes").write_text("*.joblib filter=lfs diff=lfs merge=lfs -text\n", encoding="utf-8")
+    (args.out / ".gitattributes").write_text(
+        "*.joblib filter=lfs diff=lfs merge=lfs -text\n", encoding="utf-8"
+    )
 
     sk = json.loads(meta.read_text(encoding="utf-8")).get("environment", {}).get("scikit_learn")
     req = (args.out / "requirements.txt").read_text(encoding="utf-8")
