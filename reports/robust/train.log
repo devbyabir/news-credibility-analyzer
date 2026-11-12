@@ -1,0 +1,110 @@
+{
+  "train_rows": 42328,
+  "test_rows": 10583,
+  "train_class_counts": {
+    "fake": 6422,
+    "authentic": 35906
+  },
+  "test_class_counts": {
+    "fake": 1606,
+    "authentic": 8977
+  },
+  "shared_groups": 0
+}
+fold 1 majority_baseline            {} macroF1=0.4590
+fold 1 tfidf_word_complementnb      {'alpha': 0.1} macroF1=0.8936
+fold 1 tfidf_word_complementnb      {'alpha': 0.3} macroF1=0.9221
+fold 1 tfidf_word_complementnb      {'alpha': 1.0} macroF1=0.8413
+fold 1 tfidf_word_logreg            {'C': 1.0} macroF1=0.9364
+fold 1 tfidf_word_logreg            {'C': 4.0} macroF1=0.9496
+fold 1 tfidf_word_logreg            {'C': 16.0} macroF1=0.9551
+fold 1 tfidf_word_linearsvm         {'C': 0.1} macroF1=0.9421
+fold 1 tfidf_word_linearsvm         {'C': 0.5} macroF1=0.9569
+fold 1 tfidf_char_logreg            {'C': 4.0} macroF1=0.9438
+fold 1 tfidf_char_logreg            {'C': 16.0} macroF1=0.9519
+fold 2 majority_baseline            {} macroF1=0.4590
+fold 2 tfidf_word_complementnb      {'alpha': 0.1} macroF1=0.8889
+fold 2 tfidf_word_complementnb      {'alpha': 0.3} macroF1=0.9179
+fold 2 tfidf_word_complementnb      {'alpha': 1.0} macroF1=0.8264
+fold 2 tfidf_word_logreg            {'C': 1.0} macroF1=0.9376
+fold 2 tfidf_word_logreg            {'C': 4.0} macroF1=0.9501
+fold 2 tfidf_word_logreg            {'C': 16.0} macroF1=0.9534
+fold 2 tfidf_word_linearsvm         {'C': 0.1} macroF1=0.9434
+fold 2 tfidf_word_linearsvm         {'C': 0.5} macroF1=0.9565
+fold 2 tfidf_char_logreg            {'C': 4.0} macroF1=0.9464
+fold 2 tfidf_char_logreg            {'C': 16.0} macroF1=0.9525
+fold 3 majority_baseline            {} macroF1=0.4589
+fold 3 tfidf_word_complementnb      {'alpha': 0.1} macroF1=0.8927
+fold 3 tfidf_word_complementnb      {'alpha': 0.3} macroF1=0.9161
+fold 3 tfidf_word_complementnb      {'alpha': 1.0} macroF1=0.8366
+fold 3 tfidf_word_logreg            {'C': 1.0} macroF1=0.9389
+fold 3 tfidf_word_logreg            {'C': 4.0} macroF1=0.9537
+fold 3 tfidf_word_logreg            {'C': 16.0} macroF1=0.9547
+fold 3 tfidf_word_linearsvm         {'C': 0.1} macroF1=0.9443
+fold 3 tfidf_word_linearsvm         {'C': 0.5} macroF1=0.9561
+fold 3 tfidf_char_logreg            {'C': 4.0} macroF1=0.9469
+fold 3 tfidf_char_logreg            {'C': 16.0} macroF1=0.9531
+fold 4 majority_baseline            {} macroF1=0.4589
+fold 4 tfidf_word_complementnb      {'alpha': 0.1} macroF1=0.8783
+fold 4 tfidf_word_complementnb      {'alpha': 0.3} macroF1=0.9080
+fold 4 tfidf_word_complementnb      {'alpha': 1.0} macroF1=0.8406
+fold 4 tfidf_word_logreg            {'C': 1.0} macroF1=0.9295
+fold 4 tfidf_word_logreg            {'C': 4.0} macroF1=0.9451
+fold 4 tfidf_word_logreg            {'C': 16.0} macroF1=0.9500
+fold 4 tfidf_word_linearsvm         {'C': 0.1} macroF1=0.9382
+fold 4 tfidf_word_linearsvm         {'C': 0.5} macroF1=0.9509
+fold 4 tfidf_char_logreg            {'C': 4.0} macroF1=0.9447
+fold 4 tfidf_char_logreg            {'C': 16.0} macroF1=0.9487
+fold 5 majority_baseline            {} macroF1=0.4590
+fold 5 tfidf_word_complementnb      {'alpha': 0.1} macroF1=0.8805
+fold 5 tfidf_word_complementnb      {'alpha': 0.3} macroF1=0.9105
+fold 5 tfidf_word_complementnb      {'alpha': 1.0} macroF1=0.8369
+fold 5 tfidf_word_logreg            {'C': 1.0} macroF1=0.9326
+fold 5 tfidf_word_logreg            {'C': 4.0} macroF1=0.9508
+fold 5 tfidf_word_logreg            {'C': 16.0} macroF1=0.9559
+fold 5 tfidf_word_linearsvm         {'C': 0.1} macroF1=0.9437
+fold 5 tfidf_word_linearsvm         {'C': 0.5} macroF1=0.9557
+fold 5 tfidf_char_logreg            {'C': 4.0} macroF1=0.9470
+fold 5 tfidf_char_logreg            {'C': 16.0} macroF1=0.9549
+Selected: tfidf_word_logreg {'C': 16.0}
+{
+  "n": 10583,
+  "accuracy": 0.9781725408674289,
+  "balanced_accuracy": 0.9423977298564714,
+  "macro_f1": 0.9562668653364684,
+  "per_class": {
+    "fake": {
+      "precision": 0.9623402824478816,
+      "recall": 0.8910336239103362,
+      "f1": 0.9253152279340446,
+      "support": 1606
+    },
+    "authentic": {
+      "precision": 0.9807607739665787,
+      "recall": 0.9937618358026067,
+      "f1": 0.9872185027388922,
+      "support": 8977
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "fake (0)",
+      "authentic (1)"
+    ],
+    "rows_are": "true label",
+    "matrix": [
+      [
+        1431,
+        175
+      ],
+      [
+        56,
+        8921
+      ]
+    ]
+  },
+  "roc_auc": 0.9884767090548684,
+  "pr_auc_fake": 0.968376455374972,
+  "fake_prevalence": 0.15175281111216102
+}
+Saved model to artifacts\model\model.joblib (7.0 MB)

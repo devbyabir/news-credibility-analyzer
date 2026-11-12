@@ -1,0 +1,110 @@
+{
+  "train_rows": 42328,
+  "test_rows": 10583,
+  "train_class_counts": {
+    "fake": 6422,
+    "authentic": 35906
+  },
+  "test_class_counts": {
+    "fake": 1606,
+    "authentic": 8977
+  },
+  "shared_groups": 0
+}
+fold 1 majority_baseline            {} macroF1=0.4590
+fold 1 tfidf_word_complementnb      {'alpha': 0.1} macroF1=0.8973
+fold 1 tfidf_word_complementnb      {'alpha': 0.3} macroF1=0.9245
+fold 1 tfidf_word_complementnb      {'alpha': 1.0} macroF1=0.8442
+fold 1 tfidf_word_logreg            {'C': 1.0} macroF1=0.9419
+fold 1 tfidf_word_logreg            {'C': 4.0} macroF1=0.9532
+fold 1 tfidf_word_logreg            {'C': 16.0} macroF1=0.9587
+fold 1 tfidf_word_linearsvm         {'C': 0.1} macroF1=0.9478
+fold 1 tfidf_word_linearsvm         {'C': 0.5} macroF1=0.9612
+fold 1 tfidf_char_logreg            {'C': 4.0} macroF1=0.9556
+fold 1 tfidf_char_logreg            {'C': 16.0} macroF1=0.9617
+fold 2 majority_baseline            {} macroF1=0.4590
+fold 2 tfidf_word_complementnb      {'alpha': 0.1} macroF1=0.8917
+fold 2 tfidf_word_complementnb      {'alpha': 0.3} macroF1=0.9207
+fold 2 tfidf_word_complementnb      {'alpha': 1.0} macroF1=0.8293
+fold 2 tfidf_word_logreg            {'C': 1.0} macroF1=0.9417
+fold 2 tfidf_word_logreg            {'C': 4.0} macroF1=0.9542
+fold 2 tfidf_word_logreg            {'C': 16.0} macroF1=0.9586
+fold 2 tfidf_word_linearsvm         {'C': 0.1} macroF1=0.9494
+fold 2 tfidf_word_linearsvm         {'C': 0.5} macroF1=0.9612
+fold 2 tfidf_char_logreg            {'C': 4.0} macroF1=0.9580
+fold 2 tfidf_char_logreg            {'C': 16.0} macroF1=0.9646
+fold 3 majority_baseline            {} macroF1=0.4589
+fold 3 tfidf_word_complementnb      {'alpha': 0.1} macroF1=0.8955
+fold 3 tfidf_word_complementnb      {'alpha': 0.3} macroF1=0.9202
+fold 3 tfidf_word_complementnb      {'alpha': 1.0} macroF1=0.8408
+fold 3 tfidf_word_logreg            {'C': 1.0} macroF1=0.9433
+fold 3 tfidf_word_logreg            {'C': 4.0} macroF1=0.9577
+fold 3 tfidf_word_logreg            {'C': 16.0} macroF1=0.9614
+fold 3 tfidf_word_linearsvm         {'C': 0.1} macroF1=0.9512
+fold 3 tfidf_word_linearsvm         {'C': 0.5} macroF1=0.9632
+fold 3 tfidf_char_logreg            {'C': 4.0} macroF1=0.9558
+fold 3 tfidf_char_logreg            {'C': 16.0} macroF1=0.9617
+fold 4 majority_baseline            {} macroF1=0.4589
+fold 4 tfidf_word_complementnb      {'alpha': 0.1} macroF1=0.8831
+fold 4 tfidf_word_complementnb      {'alpha': 0.3} macroF1=0.9159
+fold 4 tfidf_word_complementnb      {'alpha': 1.0} macroF1=0.8434
+fold 4 tfidf_word_logreg            {'C': 1.0} macroF1=0.9336
+fold 4 tfidf_word_logreg            {'C': 4.0} macroF1=0.9507
+fold 4 tfidf_word_logreg            {'C': 16.0} macroF1=0.9556
+fold 4 tfidf_word_linearsvm         {'C': 0.1} macroF1=0.9443
+fold 4 tfidf_word_linearsvm         {'C': 0.5} macroF1=0.9581
+fold 4 tfidf_char_logreg            {'C': 4.0} macroF1=0.9547
+fold 4 tfidf_char_logreg            {'C': 16.0} macroF1=0.9585
+fold 5 majority_baseline            {} macroF1=0.4590
+fold 5 tfidf_word_complementnb      {'alpha': 0.1} macroF1=0.8860
+fold 5 tfidf_word_complementnb      {'alpha': 0.3} macroF1=0.9153
+fold 5 tfidf_word_complementnb      {'alpha': 1.0} macroF1=0.8415
+fold 5 tfidf_word_logreg            {'C': 1.0} macroF1=0.9429
+fold 5 tfidf_word_logreg            {'C': 4.0} macroF1=0.9565
+fold 5 tfidf_word_logreg            {'C': 16.0} macroF1=0.9605
+fold 5 tfidf_word_linearsvm         {'C': 0.1} macroF1=0.9513
+fold 5 tfidf_word_linearsvm         {'C': 0.5} macroF1=0.9616
+fold 5 tfidf_char_logreg            {'C': 4.0} macroF1=0.9569
+fold 5 tfidf_char_logreg            {'C': 16.0} macroF1=0.9655
+Selected: tfidf_char_logreg {'C': 16.0}
+{
+  "n": 10583,
+  "accuracy": 0.9807238023244826,
+  "balanced_accuracy": 0.9551494957849249,
+  "macro_f1": 0.9619972227350442,
+  "per_class": {
+    "fake": {
+      "precision": 0.9528423772609819,
+      "recall": 0.9184308841843088,
+      "f1": 0.9353202282815473,
+      "support": 1606
+    },
+    "authentic": {
+      "precision": 0.9855008301051467,
+      "recall": 0.9918681073855409,
+      "f1": 0.988674217188541,
+      "support": 8977
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "fake (0)",
+      "authentic (1)"
+    ],
+    "rows_are": "true label",
+    "matrix": [
+      [
+        1475,
+        131
+      ],
+      [
+        73,
+        8904
+      ]
+    ]
+  },
+  "roc_auc": 0.9920580906151336,
+  "pr_auc_fake": 0.9763132985804505,
+  "fake_prevalence": 0.15175281111216102
+}
+Saved model to F:\Development\Projects\Major-Projects\Bangla Fake News Detection System\artifacts\model\model.joblib (3.2 MB)

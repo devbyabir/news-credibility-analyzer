@@ -1,0 +1,43 @@
+{
+  "raw_rows": 61581,
+  "raw_class_counts": {
+    "fake (0)": 12903,
+    "authentic (1)": 48678
+  },
+  "blank_text_rows": 1,
+  "invalid_label_rows": 0,
+  "raw_exact_duplicate_rows": 3187,
+  "raw_exact_duplicate_rows_label_conflict": 1640,
+  "stripped_duplicate_rows": 3593,
+  "stripped_duplicate_rows_label_conflict": 1970,
+  "no_usable_token_rows": 0,
+  "normalized_duplicate_rows": 3848,
+  "normalized_duplicate_rows_label_conflict": 1987,
+  "conflict_threshold": 0.8,
+  "group_threshold": 0.5,
+  "near_duplicate_pairs_at_conflict_threshold": 6751,
+  "similar_pairs_at_group_threshold": 16686,
+  "near_duplicate_clusters": 4772,
+  "label_conflict_clusters": 3159,
+  "label_conflict_rows_excluded": 6825,
+  "label_conflict_rows_excluded_by_label": {
+    "fake (0)": 3243,
+    "authentic (1)": 3582
+  },
+  "same_label_exact_duplicates_removed": 1844,
+  "clean_rows": 52911,
+  "clean_class_counts": {
+    "fake (0)": 8028,
+    "authentic (1)": 44883
+  },
+  "split_groups": 44396,
+  "split_groups_with_more_than_one_row": 5541,
+  "rows_in_multi_row_split_groups": 14056,
+  "largest_split_group_rows": 31,
+  "excluded_rows_total": 8670,
+  "excluded_by_reason": {
+    "label_conflict_cluster": 6825,
+    "exact_duplicate_same_label": 1844,
+    "blank_text": 1
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "model_name": "news-credibility-analyzer",
+  "package_version": "1.0.0",
+  "selected_candidate": "tfidf_char_logreg",
+  "params": {
+    "C": 16.0
+  },
+  "feature_set": {
+    "analyzer": "char_wb",
+    "ngram_range": [
+      2,
+      4
+    ],
+    "min_df": 3,
+    "max_features": 300000,
+    "sublinear_tf": true
+  },
+  "labels": {
+    "0": "fake",
+    "1": "authentic"
+  },
+  "score": "P(fake) from predict_proba, column of class 0",
+  "decision_rule": "argmax of predicted probabilities (equivalent to P(fake) >= 0.5)",
+  "dataset": {
+    "hf_repo": "hrshihab/BanFakeNews-2.0",
+    "hf_revision": "97a974186fc0ec52d3031a4a31ef8ca1f52192aa",
+    "sha256": "d9aed69b6019843a769bbcb045affd31c98cfa02f2b0bc821f551c54ba780c0a",
+    "original_doi": "10.17632/kjh887ct4j.1"
+  },
+  "config": {
+    "seed": 42,
+    "test_fraction": 0.2,
+    "cv_folds": 5,
+    "conflict_threshold": 0.8,
+    "group_threshold": 0.5,
+    "feature_sets": {
+      "word_1_2": {
+        "analyzer": "word",
+        "ngram_range": [
+          1,
+          2
+        ],
+        "min_df": 2,
+        "max_df": 0.9,
+        "max_features": 300000,
+        "sublinear_tf": true
+      },
+      "char_wb_2_4": {
+        "analyzer": "char_wb",
+        "ngram_range": [
+          2,
+          4
+        ],
+        "min_df": 3,
+        "max_features": 300000,
+        "sublinear_tf": true
+      }
+    },
+    "candidates": [
+      {
+        "name": "majority_baseline",
+        "model": "dummy",
+        "features": null
+      },
+      {
+        "name": "tfidf_word_complementnb",
+        "model": "complementnb",
+        "features": "word_1_2",
+        "params": {
+          "alpha": [
+            0.1,
+            0.3,
+            1.0
+          ]
+        }
+      },
+      {
+        "name": "tfidf_word_logreg",
+        "model": "logreg",
+        "features": "word_1_2",
+        "params": {
+          "C": [
+            1.0,
+            4.0,
+            16.0
+          ]
+        }
+      },
+      {
+        "name": "tfidf_word_linearsvm",
+        "model": "linearsvm",
+        "features": "word_1_2",
+        "params": {
+          "C": [
+            0.1,
+            0.5
+          ]
+        }
+      },
+      {
+        "name": "tfidf_char_logreg",
+        "model": "logreg",
+        "features": "char_wb_2_4",
+        "params": {
+          "C": [
+            4.0,
+            16.0
+          ]
+        }
+      }
+    ]
+  },
+  "split": {
+    "train_rows": 42328,
+    "test_rows": 10583,
+    "train_class_counts": {
+      "fake": 6422,
+      "authentic": 35906
+    },
+    "test_class_counts": {
+      "fake": 1606,
+      "authentic": 8977
+    },
+    "shared_groups": 0
+  },
+  "test_metrics": {
+    "n": 10583,
+    "accuracy": 0.9807238023244826,
+    "balanced_accuracy": 0.9551494957849249,
+    "macro_f1": 0.9619972227350442,
+    "per_class": {
+      "fake": {
+        "precision": 0.9528423772609819,
+        "recall": 0.9184308841843088,
+        "f1": 0.9353202282815473,
+        "support": 1606
+      },
+      "authentic": {
+        "precision": 0.9855008301051467,
+        "recall": 0.9918681073855409,
+        "f1": 0.988674217188541,
+        "support": 8977
+      }
+    },
+    "confusion_matrix": {
+      "labels": [
+        "fake (0)",
+        "authentic (1)"
+      ],
+      "rows_are": "true label",
+      "matrix": [
+        [
+          1475,
+          131
+        ],
+        [
+          73,
+          8904
+        ]
+      ]
+    },
+    "roc_auc": 0.9920580906151336,
+    "pr_auc_fake": 0.9763132985804505,
+    "fake_prevalence": 0.15175281111216102
+  },
+  "calibration": {
+    "brier_fake": 0.016286483746195846,
+    "ece_10_bins": 0.0142899547205878
+  },
+  "bands": [
+    {
+      "band": "strongly_authentic_like",
+      "p_fake_range": [
+        0.0,
+        0.2
+      ],
+      "n_test": 8704,
+      "share_of_test": 0.8224511008220732,
+      "observed_fake_rate": 0.00815716911764706
+    },
+    {
+      "band": "leans_authentic_like",
+      "p_fake_range": [
+        0.2,
+        0.4
+      ],
+      "n_test": 263,
+      "share_of_test": 0.024851176415005196,
+      "observed_fake_rate": 0.1444866920152091
+    },
+    {
+      "band": "uncertain",
+      "p_fake_range": [
+        0.4,
+        0.6
+      ],
+      "n_test": 109,
+      "share_of_test": 0.010299536993291128,
+      "observed_fake_rate": 0.3761467889908257
+    },
+    {
+      "band": "leans_fake_like",
+      "p_fake_range": [
+        0.6,
+        0.8
+      ],
+      "n_test": 110,
+      "share_of_test": 0.010394028158367192,
+      "observed_fake_rate": 0.6545454545454545
+    },
+    {
+      "band": "strongly_fake_like",
+      "p_fake_range": [
+        0.8,
+        1.0
+      ],
+      "n_test": 1397,
+      "share_of_test": 0.13200415761126336,
+      "observed_fake_rate": 0.9906943450250537
+    }
+  ],
+  "latency_single_article_cpu": {
+    "n": 200,
+    "median_ms": 2.104199997120304,
+    "p95_ms": 5.410760000086156
+  },
+  "artifact_size_mb": 3.23,
+  "environment": {
+    "python": "3.14.7",
+    "scikit_learn": "1.9.1"
+  }
+}

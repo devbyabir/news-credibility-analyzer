@@ -1,0 +1,430 @@
+{
+  "note": "Selection used CV on the training split only; test was evaluated once per candidate.",
+  "split": {
+    "train_rows": 42328,
+    "test_rows": 10583,
+    "train_class_counts": {
+      "fake": 6422,
+      "authentic": 35906
+    },
+    "test_class_counts": {
+      "fake": 1606,
+      "authentic": 8977
+    },
+    "shared_groups": 0
+  },
+  "candidates": [
+    {
+      "candidate": "majority_baseline",
+      "params": {},
+      "selected": false,
+      "cv_macro_f1_mean": 0.4589564640110394,
+      "cv_macro_f1_std": 1.7157743915956192e-05,
+      "test": {
+        "n": 10583,
+        "accuracy": 0.848247188887839,
+        "balanced_accuracy": 0.5,
+        "macro_f1": 0.45894683026584865,
+        "per_class": {
+          "fake": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 1606
+          },
+          "authentic": {
+            "precision": 0.848247188887839,
+            "recall": 1.0,
+            "f1": 0.9178936605316973,
+            "support": 8977
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "fake (0)",
+            "authentic (1)"
+          ],
+          "rows_are": "true label",
+          "matrix": [
+            [
+              0,
+              1606
+            ],
+            [
+              0,
+              8977
+            ]
+          ]
+        },
+        "roc_auc": 0.5,
+        "pr_auc_fake": 0.15175281111216102,
+        "fake_prevalence": 0.15175281111216102
+      },
+      "train_fit_seconds": 0.001015699999697972,
+      "scores_are_probabilities": true
+    },
+    {
+      "candidate": "tfidf_word_complementnb",
+      "params": {
+        "alpha": 0.3
+      },
+      "selected": false,
+      "cv_macro_f1_mean": 0.9193091047785297,
+      "cv_macro_f1_std": 0.0037756547673499746,
+      "test": {
+        "n": 10583,
+        "accuracy": 0.9536993291127279,
+        "balanced_accuracy": 0.9172353215932623,
+        "macro_f1": 0.9113419194557272,
+        "per_class": {
+          "fake": {
+            "precision": 0.8357400722021661,
+            "recall": 0.864881693648817,
+            "f1": 0.8500611995104039,
+            "support": 1606
+          },
+          "authentic": {
+            "precision": 0.9756753727160632,
+            "recall": 0.9695889495377075,
+            "f1": 0.9726226394010504,
+            "support": 8977
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "fake (0)",
+            "authentic (1)"
+          ],
+          "rows_are": "true label",
+          "matrix": [
+            [
+              1389,
+              217
+            ],
+            [
+              273,
+              8704
+            ]
+          ]
+        },
+        "roc_auc": 0.971386264413651,
+        "pr_auc_fake": 0.9251375255607287,
+        "fake_prevalence": 0.15175281111216102
+      },
+      "train_fit_seconds": 38.961584899996524,
+      "scores_are_probabilities": true
+    },
+    {
+      "candidate": "tfidf_word_logreg",
+      "params": {
+        "C": 16.0
+      },
+      "selected": false,
+      "cv_macro_f1_mean": 0.9589750388918497,
+      "cv_macro_f1_std": 0.0022155021662880157,
+      "test": {
+        "n": 10583,
+        "accuracy": 0.979873381838798,
+        "balanced_accuracy": 0.946467907261549,
+        "macro_f1": 0.9597393503186563,
+        "per_class": {
+          "fake": {
+            "precision": 0.9665103817816477,
+            "recall": 0.8985056039850561,
+            "f1": 0.9312681510164569,
+            "support": 1606
+          },
+          "authentic": {
+            "precision": 0.9820682068206821,
+            "recall": 0.9944302105380417,
+            "f1": 0.9882105496208557,
+            "support": 8977
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "fake (0)",
+            "authentic (1)"
+          ],
+          "rows_are": "true label",
+          "matrix": [
+            [
+              1443,
+              163
+            ],
+            [
+              50,
+              8927
+            ]
+          ]
+        },
+        "roc_auc": 0.9912282405388837,
+        "pr_auc_fake": 0.9741022284699296,
+        "fake_prevalence": 0.15175281111216102
+      },
+      "train_fit_seconds": 43.65161909999733,
+      "scores_are_probabilities": true
+    },
+    {
+      "candidate": "tfidf_word_linearsvm",
+      "params": {
+        "C": 0.5
+      },
+      "selected": false,
+      "cv_macro_f1_mean": 0.9610755883518725,
+      "cv_macro_f1_std": 0.0018305571226592443,
+      "test": {
+        "n": 10583,
+        "accuracy": 0.9806293111594065,
+        "balanced_accuracy": 0.947424759635493,
+        "macro_f1": 0.9612099965769556,
+        "per_class": {
+          "fake": {
+            "precision": 0.9704499664204164,
+            "recall": 0.8997509339975094,
+            "f1": 0.9337641357027464,
+            "support": 1606
+          },
+          "authentic": {
+            "precision": 0.9822960193534198,
+            "recall": 0.9950985852734766,
+            "f1": 0.9886558574511648,
+            "support": 8977
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "fake (0)",
+            "authentic (1)"
+          ],
+          "rows_are": "true label",
+          "matrix": [
+            [
+              1445,
+              161
+            ],
+            [
+              44,
+              8933
+            ]
+          ]
+        },
+        "roc_auc": 0.9917321573563324,
+        "pr_auc_fake": 0.9760014410818983,
+        "fake_prevalence": 0.15175281111216102
+      },
+      "train_fit_seconds": 41.238243100000545,
+      "scores_are_probabilities": false
+    },
+    {
+      "candidate": "tfidf_char_logreg",
+      "params": {
+        "C": 16.0
+      },
+      "selected": true,
+      "cv_macro_f1_mean": 0.9623861893001557,
+      "cv_macro_f1_std": 0.0027539210177101514,
+      "test": {
+        "n": 10583,
+        "accuracy": 0.9807238023244826,
+        "balanced_accuracy": 0.9551494957849249,
+        "macro_f1": 0.9619972227350442,
+        "per_class": {
+          "fake": {
+            "precision": 0.9528423772609819,
+            "recall": 0.9184308841843088,
+            "f1": 0.9353202282815473,
+            "support": 1606
+          },
+          "authentic": {
+            "precision": 0.9855008301051467,
+            "recall": 0.9918681073855409,
+            "f1": 0.988674217188541,
+            "support": 8977
+          }
+        },
+        "confusion_matrix": {
+          "labels": [
+            "fake (0)",
+            "authentic (1)"
+          ],
+          "rows_are": "true label",
+          "matrix": [
+            [
+              1475,
+              131
+            ],
+            [
+              73,
+              8904
+            ]
+          ]
+        },
+        "roc_auc": 0.9920580906151336,
+        "pr_auc_fake": 0.9763132985804505,
+        "fake_prevalence": 0.15175281111216102
+      },
+      "train_fit_seconds": 100.27369519999775,
+      "scores_are_probabilities": true
+    }
+  ],
+  "calibration": {
+    "brier_fake": 0.016286483746195846,
+    "ece_10_bins": 0.0142899547205878,
+    "bins": [
+      {
+        "bin": [
+          0.0,
+          0.1
+        ],
+        "n": 8340,
+        "mean_p_fake": 0.012339961114356814,
+        "observed_fake_rate": 0.00539568345323741
+      },
+      {
+        "bin": [
+          0.1,
+          0.2
+        ],
+        "n": 364,
+        "mean_p_fake": 0.14023122573215177,
+        "observed_fake_rate": 0.07142857142857142
+      },
+      {
+        "bin": [
+          0.2,
+          0.30000000000000004
+        ],
+        "n": 165,
+        "mean_p_fake": 0.24759003484203942,
+        "observed_fake_rate": 0.12727272727272726
+      },
+      {
+        "bin": [
+          0.30000000000000004,
+          0.4
+        ],
+        "n": 98,
+        "mean_p_fake": 0.3462663705120938,
+        "observed_fake_rate": 0.17346938775510204
+      },
+      {
+        "bin": [
+          0.4,
+          0.5
+        ],
+        "n": 68,
+        "mean_p_fake": 0.4523615400715904,
+        "observed_fake_rate": 0.3235294117647059
+      },
+      {
+        "bin": [
+          0.5,
+          0.6000000000000001
+        ],
+        "n": 41,
+        "mean_p_fake": 0.5442052798988725,
+        "observed_fake_rate": 0.4634146341463415
+      },
+      {
+        "bin": [
+          0.6000000000000001,
+          0.7000000000000001
+        ],
+        "n": 50,
+        "mean_p_fake": 0.6476132283615955,
+        "observed_fake_rate": 0.62
+      },
+      {
+        "bin": [
+          0.7000000000000001,
+          0.8
+        ],
+        "n": 60,
+        "mean_p_fake": 0.7485789831457809,
+        "observed_fake_rate": 0.6833333333333333
+      },
+      {
+        "bin": [
+          0.8,
+          0.9
+        ],
+        "n": 87,
+        "mean_p_fake": 0.8609341408874694,
+        "observed_fake_rate": 0.8850574712643678
+      },
+      {
+        "bin": [
+          0.9,
+          1.0
+        ],
+        "n": 1310,
+        "mean_p_fake": 0.9885362156196327,
+        "observed_fake_rate": 0.9977099236641221
+      }
+    ]
+  },
+  "bands": [
+    {
+      "band": "strongly_authentic_like",
+      "p_fake_range": [
+        0.0,
+        0.2
+      ],
+      "n_test": 8704,
+      "share_of_test": 0.8224511008220732,
+      "observed_fake_rate": 0.00815716911764706
+    },
+    {
+      "band": "leans_authentic_like",
+      "p_fake_range": [
+        0.2,
+        0.4
+      ],
+      "n_test": 263,
+      "share_of_test": 0.024851176415005196,
+      "observed_fake_rate": 0.1444866920152091
+    },
+    {
+      "band": "uncertain",
+      "p_fake_range": [
+        0.4,
+        0.6
+      ],
+      "n_test": 109,
+      "share_of_test": 0.010299536993291128,
+      "observed_fake_rate": 0.3761467889908257
+    },
+    {
+      "band": "leans_fake_like",
+      "p_fake_range": [
+        0.6,
+        0.8
+      ],
+      "n_test": 110,
+      "share_of_test": 0.010394028158367192,
+      "observed_fake_rate": 0.6545454545454545
+    },
+    {
+      "band": "strongly_fake_like",
+      "p_fake_range": [
+        0.8,
+        1.0
+      ],
+      "n_test": 1397,
+      "share_of_test": 0.13200415761126336,
+      "observed_fake_rate": 0.9906943450250537
+    }
+  ],
+  "latency_single_article_cpu": {
+    "n": 200,
+    "median_ms": 2.104199997120304,
+    "p95_ms": 5.410760000086156
+  },
+  "artifact_size_mb": 3.23,
+  "total_runtime_minutes": 20.0,
+  "environment": {
+    "python": "3.14.7",
+    "scikit_learn": "1.9.1"
+  }
+}
