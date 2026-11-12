@@ -5,7 +5,8 @@ Work through this list before pushing to GitHub or updating the live demo.
 ## Repository hygiene
 - [ ] `git status` is clean and `git log` shows only your configured author identity.
 - [ ] No dataset, model or cache files are tracked:
-      `git ls-files | grep -Ei '\.(csv|joblib|pkl|pt|bin|safetensors)$'` prints nothing.
+      `git ls-files | grep -Ei '\.(csv|joblib|pkl|pt|bin|safetensors)$' | grep -v '^reports/'` prints nothing
+      (the small CV result CSVs in `reports/` are intentional).
 - [ ] No tracked file is larger than 5 MB:
       `git ls-files -z | xargs -0 du -k | sort -n | tail -5`.
 - [ ] No secrets: `git grep -nIiE "(hf_[A-Za-z0-9]{20,}|api[_-]?key|secret|password|token\s*=)"`
