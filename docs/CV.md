@@ -25,13 +25,13 @@ Built a leakage-free Bangla news-text classifier on BanFakeNews-2.0 (61.6k artic
   macro F1 0.956 (fake precision 0.962, recall 0.891) against a 0.459 majority baseline.
 - Found that the first model relied on collection artifacts (years, months, bylines, COVID-era
   words). Masked them and documented the residual source bias instead of reporting the higher score.
-- Shipped a Gradio web demo with uncertainty bands, per-word explanations and input validation,
-  plus 30+ pytest tests, CI and Hugging Face Spaces packaging.
+- Shipped Streamlit and Gradio web demos with uncertainty bands, per-word explanations and input validation,
+  plus 41 pytest tests, CI and deployment packaging for Streamlit Cloud and Hugging Face Spaces.
 
 ## Links
 - Code: `https://github.com/<your-github-username>/news-credibility-analyzer`
-- Live demo: `https://huggingface.co/spaces/<your-hf-username>/news-credibility-analyzer`
-  (only after you deploy it)
+- Live demo: `https://<your-subdomain>.streamlit.app` or
+  `https://huggingface.co/spaces/<your-hf-username>/news-credibility-analyzer` (only after you deploy it)
 
 ## Do not claim
 - That it "detects fake news with 96–98 % accuracy" in general. The scores are in-distribution

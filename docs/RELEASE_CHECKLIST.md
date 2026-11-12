@@ -19,7 +19,7 @@ Work through this list before pushing to GitHub or updating the live demo.
 - [ ] The full pipeline reproduces from scratch:
       `python -m nca.data download && python -m nca.train`. Compare the new
       `reports/test_results.json` with the committed one.
-- [ ] `python app.py` starts. Both illustrative examples return a result.
+- [ ] `python app.py` and `streamlit run deploy/streamlit/streamlit_app.py` start. Both illustrative examples return a result.
       Empty, English-only and over-long input each show a clear message.
 
 ## Documentation
@@ -32,5 +32,8 @@ Work through this list before pushing to GitHub or updating the live demo.
 - [ ] Create an empty GitHub repository `news-credibility-analyzer`. Do not add a README, license or `.gitignore` there.
 - [ ] `git remote add origin https://github.com/<you>/news-credibility-analyzer.git && git push -u origin main`
 - [ ] Check that the GitHub Actions CI run passes.
-- [ ] Deploy the Space (docs/DEPLOYMENT.md) and test it in a private browser window.
+- [ ] Streamlit: replace the username in `deploy/streamlit/model_source.json`, publish release `v1.0.0`
+      with `model.joblib` + `metadata.json`, and deploy `deploy/streamlit/streamlit_app.py` (docs/DEPLOYMENT.md §2).
+- [ ] Or/also deploy the Hugging Face Space (docs/DEPLOYMENT.md §3).
+- [ ] Test the public URL in a private browser window.
 - [ ] Add repository topics: `bangla`, `nlp`, `fake-news-detection`, `text-classification`, `scikit-learn`, `gradio`.

@@ -11,9 +11,9 @@ drove the score, and runs as a small web demo.
 > **It is not a fact-checker.** The model looks at wording and style only. It cannot check claims,
 > sources or dates, and its output says nothing definitive about whether a story is true.
 
-**Live demo:** not yet deployed. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Replace this line with the Space URL once it is live.
+**Live demo:** not yet deployed. It is ready for Streamlit Community Cloud or Hugging Face Spaces; see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Replace this line with the public URL once it is live.
 
-![Demo screenshot](docs/assets/demo_fake_like.png)
+![Streamlit demo screenshot](docs/assets/streamlit_demo.png)
 
 ## Highlights
 
@@ -25,6 +25,8 @@ drove the score, and runs as a small web demo.
 - **Shortcut analysis.** The first model's ~0.96 macro F1 relied partly on dates, bylines, COVID-era
   words and month names: artifacts of *when and where* each class was collected. The deployed model
   masks these cues. The remaining limitations are measured and documented.
+- **Two web demos.** Streamlit and Gradio front-ends share one inference module.
+  Hosted deployments download the model from a GitHub Release and verify its SHA-256 before loading it.
 - **Honest product.** Uncertainty bands with held-out fake rates, per-word explanations, and
   explicit handling of empty, oversized, non-Bangla and short input.
 - **Reproducible.** Pinned dependencies, a checksum-verified dataset download, fixed seeds, a saved
@@ -109,7 +111,9 @@ artifacts/model/model.joblib + metadata.json ──► nca.predict ──► app
 | `src/nca/evaluate.py` | Metrics, calibration, uncertainty bands, figures |
 | `src/nca/predict.py` | Validation, scoring, explanations (CLI + library) |
 | `src/nca/finetune.py` | Optional BanglaBERT fine-tuning (GPU) |
-| `app.py` | Gradio web demo |
+| `deploy/streamlit/streamlit_app.py` | Streamlit web demo (Streamlit Community Cloud) |
+| `app.py` | Gradio web demo (Hugging Face Spaces) |
+| `src/nca/content.py`, `src/nca/remote.py` | Shared demo text; checksum-verified model download for hosted demos |
 | `configs/` | `baseline.json` (standard text) and `robust.json` (deployed) |
 | `reports/` | Committed audit, CV, test metrics, figures, failure cases |
 | `legacy/` | Original 2025 notebook, kept for history. Its metrics are invalid. |
@@ -137,7 +141,7 @@ Reproduce the data audit and the deployed model (~25 minutes on a laptop CPU):
 
 ```bash
 python -m nca.data download
-python -m nca.train --config configs/robust.json --reports reports/robust --model-dir artifacts/model
+python -m nca.train    # defaults: configs/robust.json -> reports/robust/, artifacts/model/
 ```
 
 Optional: reproduce the unmasked baseline benchmark:
@@ -146,7 +150,13 @@ Optional: reproduce the unmasked baseline benchmark:
 python -m nca.train --config configs/baseline.json --reports reports/baseline --model-dir artifacts/baseline
 ```
 
-Start the demo at http://127.0.0.1:7860:
+Start the Streamlit demo at http://localhost:8501:
+
+```bash
+streamlit run deploy/streamlit/streamlit_app.py
+```
+
+Or start the Gradio demo at http://127.0.0.1:7860:
 
 ```bash
 python app.py
