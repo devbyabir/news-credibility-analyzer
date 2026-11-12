@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "news-credibility-analyzer"
+version = "1.0.0"
+description = "Bangla news credibility analyzer: a leakage-free text classifier trained on BanFakeNews-2.0, with a Gradio demo."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Abir Ahmmed" }]
+keywords = ["bangla", "bengali", "nlp", "fake-news", "text-classification", "scikit-learn", "gradio"]
+dependencies = [
+    "numpy>=2.0,<3",
+    "pandas>=2.2,<4",
+    "scipy>=1.13,<2",
+    "scikit-learn==1.9.1",  # pinned: the saved model is a scikit-learn pickle
+    "joblib>=1.4,<2",
+    "matplotlib>=3.8,<4",
+    "huggingface_hub>=0.25,<3",
+]
+
+[project.optional-dependencies]
+app = ["gradio>=5,<7"]
+dev = ["pytest>=8", "ruff>=0.6"]
+finetune = ["torch>=2.4", "transformers>=4.45,<6", "accelerate>=1.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = ["legacy"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]
