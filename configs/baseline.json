@@ -1,0 +1,31 @@
+{
+  "seed": 42,
+  "test_fraction": 0.2,
+  "cv_folds": 5,
+  "conflict_threshold": 0.8,
+  "group_threshold": 0.5,
+  "feature_sets": {
+    "word_1_2": {
+      "analyzer": "word",
+      "ngram_range": [1, 2],
+      "min_df": 2,
+      "max_df": 0.9,
+      "max_features": 300000,
+      "sublinear_tf": true
+    },
+    "char_wb_2_4": {
+      "analyzer": "char_wb",
+      "ngram_range": [2, 4],
+      "min_df": 3,
+      "max_features": 300000,
+      "sublinear_tf": true
+    }
+  },
+  "candidates": [
+    {"name": "majority_baseline", "model": "dummy", "features": null},
+    {"name": "tfidf_word_complementnb", "model": "complementnb", "features": "word_1_2", "params": {"alpha": [0.1, 0.3, 1.0]}},
+    {"name": "tfidf_word_logreg", "model": "logreg", "features": "word_1_2", "params": {"C": [1.0, 4.0, 16.0]}},
+    {"name": "tfidf_word_linearsvm", "model": "linearsvm", "features": "word_1_2", "params": {"C": [0.1, 0.5]}},
+    {"name": "tfidf_char_logreg", "model": "logreg", "features": "char_wb_2_4", "params": {"C": [4.0, 16.0]}}
+  ]
+}

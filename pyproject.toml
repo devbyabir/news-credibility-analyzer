@@ -7,7 +7,7 @@ name = "news-credibility-analyzer"
 version = "1.0.0"
 description = "Bangla news credibility analyzer: a leakage-free text classifier trained on BanFakeNews-2.0, with a Gradio demo."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 license = "MIT"
 authors = [{ name = "Abir Ahmmed" }]
 keywords = ["bangla", "bengali", "nlp", "fake-news", "text-classification", "scikit-learn", "gradio"]
@@ -36,9 +36,9 @@ addopts = "-q"
 
 [tool.ruff]
 line-length = 110
-target-version = "py311"
+target-version = "py312"
 extend-exclude = ["legacy"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP"]
-ignore = ["E501"]
+ignore = ["E501", "B905"]
