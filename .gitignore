@@ -47,3 +47,4 @@ secrets/
 Thumbs.db
 .vscode/
 .idea/
+.model_cache/
