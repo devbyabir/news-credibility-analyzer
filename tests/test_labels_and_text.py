@@ -51,9 +51,16 @@ def test_robust_preprocessor_masks_shortcut_cues():
 
     raw = "ঢাকা, ১২ সেপ্টেম্বর ২০১৮ (বিডি-প্রতিদিন/এএম): করোনাভাইরাস নিয়ে চট্টগ্রাম মতিনিধি জানান 25 জন!"
     out = normalize_robust(raw)
-    for cue in ("২০১৮", "১২", "২৫", "/", "(", "বিডি", "করোনা", "মতিনিধি"):
+    for cue in ("২০১৮", "১২", "২৫", "/", "(", "বিডি", "করোনা", "মতিনিধি", "সেপ্টেম্বর"):
         assert cue not in out
     # article content and stylistic punctuation survive
-    for kept in ("ঢাকা", "সেপ্টেম্বর", "চট্টগ্রাম", "প্রতিনিধি", "জানান", "!"):
+    for kept in ("ঢাকা", "চট্টগ্রাম", "প্রতিনিধি", "জানান", "!"):
         assert kept in out
     assert normalize_robust(out) == out
+
+
+def test_month_masking_respects_word_boundaries():
+    from nca.text import normalize_robust
+
+    out = normalize_robust("মে মাসে মেয়র মেঘ দেখেন জুনিয়র দল জুনের খেলা অক্টোবরে")
+    assert out.split() == ["মাসে", "মেয়র", "মেঘ", "দেখেন", "জুনিয়র", "দল", "খেলা"]

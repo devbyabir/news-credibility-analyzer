@@ -41,6 +41,11 @@ _COVID = re.compile(
 )
 # tokens containing "bidi" (BD), e.g. "bidi-protidin" bylines and "bdnews24"-style sources
 _BD_BYLINE = re.compile(r"\S*\u09ac\u09bf\u09a1\u09bf\S*")
+# Gregorian month names (Bangla). Authentic articles cluster in September/October
+# (their collection window), so months act as a collection-period cue.
+_MONTHS = re.compile(
+    r"(?<!\S)(?:\u09ab\u09c7\u09ac\u09cd\u09b0\u09c1\u09af\u09bc\u09be\u09b0\u09bf|\u09b8\u09c7\u09aa\u09cd\u099f\u09c7\u09ae\u09cd\u09ac\u09b0|\u099c\u09be\u09a8\u09c1\u09af\u09bc\u09be\u09b0\u09bf|\u09a1\u09bf\u09b8\u09c7\u09ae\u09cd\u09ac\u09b0|\u0985\u0995\u09cd\u099f\u09cb\u09ac\u09b0|\u09a8\u09ad\u09c7\u09ae\u09cd\u09ac\u09b0|\u098f\u09aa\u09cd\u09b0\u09bf\u09b2|\u09ae\u09be\u09b0\u09cd\u099a|\u099c\u09c1\u09b2\u09be\u0987|\u0986\u0997\u09b8\u09cd\u099f|\u0986\u0997\u09b7\u09cd\u099f|\u099c\u09c1\u09a8|\u09ae\u09c7)(?:\u09c7\u09b0|\u09b0|\u09c7)?(?=\s|$)"
+)  # optional -er/-r/-e endings
 # mis-encoded "motinidhi" -> "protinidhi" (correspondent); occurs only in some fake-labelled sources
 _GARBLED = (
     "\u09ae\u09a4\u09bf\u09a8\u09bf\u09a7\u09bf",
@@ -65,7 +70,7 @@ def normalize_robust(text: object) -> str:
     """``normalize_text`` plus masking of dataset-specific shortcut cues.
 
     BanFakeNews-2.0's authentic and fake articles come from different periods
-    and portals, so dates, COVID-era words, byline fragments (``x/y``, ``bd...``
+    and portals, so dates, month names, COVID-era words, byline fragments (``x/y``, ``bd...``
     sources) and a mis-encoded word separate the classes without saying anything
     about credibility (see docs/DATA.md, "Shortcut cues"). This variant removes
     them so the model must rely more on the article body. It cannot remove every
@@ -77,6 +82,7 @@ def normalize_robust(text: object) -> str:
     s = _COVID.sub(" ", s)
     s = _BD_BYLINE.sub(" ", s)
     s = _DIGIT_RUN.sub(" ", s)
+    s = _MONTHS.sub(" ", s)
     return _WS.sub(" ", s).strip()
 
 
