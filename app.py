@@ -144,7 +144,7 @@ def _about_md() -> str:
         f"**ROC-AUC:** {m.get('roc_auc', float('nan')):.3f}  \n"
         f"**Fake class:** precision {fake['precision']:.3f}, recall {fake['recall']:.3f}, F1 {fake['f1']:.3f}\n\n"
         "**Limitations.** The training articles come from a fixed period and a limited set of Bangla "
-        "news portals, and the fake examples include satire and clickbait-style writing. The model "
+        "news portals, and the fake examples include satirical and sensational writing. The model "
         "therefore partly learns *writing style and source*, not truth. New topics, short texts and "
         "well-written misinformation can easily be scored as authentic-like.\n\n"
         "Labels: `0 = fake`, `1 = authentic`. Dataset: BanFakeNews-2.0, H. M. Shibu, Mendeley Data, "
