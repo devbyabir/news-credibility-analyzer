@@ -8,11 +8,11 @@ from __future__ import annotations
 import argparse
 import json
 import os
+from collections import Counter
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 import joblib
-import numpy as np
 
 from nca.evaluate import BANDS, band_of
 from nca.labels import AUTHENTIC, FAKE, LABEL_NAMES
@@ -120,19 +120,38 @@ class Predictor:
         )
 
     def _explain(self, text: str, k: int) -> tuple[list, list]:
-        """Per-term contribution (tf-idf weight x coefficient) for linear models."""
+        """Per-term contribution (tf-idf weight x coefficient) for linear models.
+
+        Word models report their n-grams directly. Character n-gram models are
+        attributed back to whole words: each n-gram's contribution is shared
+        equally among its occurrences, and a word's score is the sum over the
+        n-grams it contains. Positive score -> authentic-like.
+        """
         steps = getattr(self.pipeline, "named_steps", {})
         vec, clf = steps.get("tfidf"), steps.get("clf")
         if vec is None or not hasattr(clf, "coef_"):
             return [], []
         x = vec.transform([text])
         coef = clf.coef_.ravel()  # positive -> authentic (class 1)
-        idx = x.indices
-        contrib = x.data * coef[idx]
-        names = vec.get_feature_names_out()[idx] if len(idx) else np.array([])
-        order = np.argsort(contrib)
-        fake = [(str(names[i]), float(-contrib[i])) for i in order[:k] if contrib[i] < 0]
-        auth = [(str(names[i]), float(contrib[i])) for i in order[::-1][:k] if contrib[i] > 0]
+        contrib = dict(zip(x.indices.tolist(), (x.data * coef[x.indices]).tolist()))
+        if vec.analyzer == "word":
+            names = vec.get_feature_names_out()
+            scores = {str(names[i]): c for i, c in contrib.items()}
+        else:
+            analyzer, vocab = vec.build_analyzer(), vec.vocabulary_
+            occurrences = Counter(analyzer(text))
+            words = Counter(tokenize(normalize_text(text)))
+            scores = {}
+            for word, n in words.items():
+                s = 0.0
+                for g in analyzer(word):
+                    j = vocab.get(g)
+                    if j is not None and j in contrib:
+                        s += contrib[j] / occurrences[g]
+                scores[word] = s * n
+        ranked = sorted(scores.items(), key=lambda kv: kv[1])
+        fake = [(t, -s) for t, s in ranked[:k] if s < 0]
+        auth = [(t, s) for t, s in ranked[::-1][:k] if s > 0]
         return fake, auth
 
 

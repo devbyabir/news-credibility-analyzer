@@ -82,3 +82,13 @@ def test_bands_cover_unit_interval():
     assert band_of(1.0) == "strongly_fake_like"
     stats = band_stats(np.array([0, 1, 1]), np.array([0.95, 0.1, 0.5]))
     assert sum(s["n_test"] for s in stats) == 3
+
+
+def test_char_model_explanations_are_whole_words(synthetic_df):
+    from nca.models import make_pipeline
+
+    spec = {"analyzer": "char_wb", "ngram_range": [2, 4], "min_df": 1, "sublinear_tf": True}
+    pipe = make_pipeline(spec, "logreg", seed=0, C=4.0).fit(synthetic_df["text"], synthetic_df["label"])
+    r = Predictor(pipe).predict(make_article(FAKE_WORDS, random.Random(9)))
+    assert r.label == FAKE
+    assert r.top_fake_terms and all(t in FAKE_WORDS for t, _ in r.top_fake_terms)
