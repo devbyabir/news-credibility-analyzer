@@ -195,9 +195,7 @@ def audit_and_clean(
     excluded.append(_reasons(valid.loc[no_tokens, "row_id"], "no_usable_tokens"))
     valid = valid[~no_tokens]
     audit["normalized_duplicate_rows"] = int(valid["key"].duplicated().sum())
-    audit["normalized_duplicate_rows_label_conflict"] = _conflicting_repeat_rows(
-        valid["key"], valid["label"]
-    )
+    audit["normalized_duplicate_rows_label_conflict"] = _conflicting_repeat_rows(valid["key"], valid["label"])
 
     # Similarity between unique normalised texts, computed once at the looser threshold.
     uniq = valid.drop_duplicates("key")[["key", "norm"]].reset_index(drop=True)
