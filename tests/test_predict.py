@@ -45,7 +45,7 @@ def test_band_statistics_from_metadata_are_attached(tiny_model_dir):
         ("", "paste"),
         ("   ", "paste"),
         (None, "paste"),
-        ("This is an English news article about the economy and politics today.", "Bangla"),
+        ("This is an English news article about the economy and politics today.", "only supports Bangla"),
         ("ঢাকা", "too short"),
     ],
 )

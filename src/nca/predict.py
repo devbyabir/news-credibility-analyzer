@@ -62,10 +62,11 @@ def validate_text(text: str | None) -> tuple[str, list[str]]:
     text = str(text).strip()
     if len(text) > MAX_CHARS:
         raise InputError(f"Text is too long ({len(text):,} characters). The limit is {MAX_CHARS:,}.")
-    if bangla_char_count(text) < MIN_BANGLA_CHARS:
-        raise InputError("Text is too short or contains too little Bangla script to analyse.")
-    if bangla_ratio(text) < MIN_BANGLA_RATIO:
+    n_letters = sum(ch.isalpha() for ch in text)
+    if n_letters >= MIN_BANGLA_CHARS and bangla_ratio(text) < MIN_BANGLA_RATIO:
         raise InputError("This model only supports Bangla text. Most of the input is in another script.")
+    if bangla_char_count(text) < MIN_BANGLA_CHARS:
+        raise InputError("Text is too short to analyse. Please paste a full Bangla news article.")
     warnings = []
     n_tokens = len(tokenize(normalize_text(text)))
     if n_tokens < SHORT_TEXT_TOKENS:

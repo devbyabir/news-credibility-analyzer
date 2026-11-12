@@ -104,7 +104,9 @@ def analyze(text: str) -> str:
     if r.band_test_fake_rate is not None and r.band_test_n:
         band_stat = (
             f"On the held-out test set, <b>{r.band_test_fake_rate * 100:.0f}%</b> of the "
-            f"{r.band_test_n:,} articles that fell in this band were labelled fake."
+            f"{r.band_test_n:,} articles that fell in this band were labelled fake. That figure "
+            "describes text like the training data; it may not hold for articles from other "
+            "periods, portals or topics."
         )
     else:
         band_stat = ""
