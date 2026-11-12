@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNTIME_MODULES = ["__init__.py", "labels.py", "text.py", "evaluate.py", "predict.py"]
+RUNTIME_MODULES = ["__init__.py", "labels.py", "text.py", "evaluate.py", "predict.py", "content.py"]
 
 
 def main() -> None:
