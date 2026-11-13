@@ -32,8 +32,11 @@ def test_streamlit_app_rejects_empty_input(monkeypatch, tiny_model_dir):
 
 
 def test_streamlit_app_reports_missing_model(monkeypatch, tmp_path):
-    monkeypatch.setenv("NCA_MODEL_DIR", str(tmp_path))  # empty dir, and the placeholder URL is unset
-    monkeypatch.delenv("NCA_MODEL_BASE_URL", raising=False)
+    # No local model, an empty download cache and a download URL the app must refuse (not https).
+    # This stays offline and deterministic now that model_source.json points at a real release.
+    monkeypatch.setenv("NCA_MODEL_DIR", str(tmp_path / "no_model"))
+    monkeypatch.setenv("NCA_MODEL_CACHE", str(tmp_path / "cache"))
+    monkeypatch.setenv("NCA_MODEL_BASE_URL", "http://insecure.invalid/models")
     at = AppTest.from_file(APP, default_timeout=60).run()
     assert not at.exception
     assert any("could not be loaded" in e.value for e in at.error)

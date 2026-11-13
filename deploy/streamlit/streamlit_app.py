@@ -54,13 +54,13 @@ h1 {font-size: clamp(1.7rem, 5.5vw, 2.6rem) !important;}
 
 
 @st.cache_resource(show_spinner="Loading model…")
-def load_predictor(local_dir: str, base_url: str) -> Predictor:
+def load_predictor(local_dir: str, base_url: str, cache_dir: str) -> Predictor:
     """Load the local model if present, else download + verify it. Cached per location."""
     local = Path(local_dir)
     if (local / "model.joblib").exists():
         return Predictor.load(local)
     source = load_source(HERE / "model_source.json")
-    model_dir = ensure_model(ROOT / ".model_cache", base_url or source["base_url"], source["sha256"])
+    model_dir = ensure_model(Path(cache_dir), base_url or source["base_url"], source["sha256"])
     return Predictor.load(model_dir)
 
 
@@ -121,6 +121,7 @@ def main() -> None:
         predictor = load_predictor(
             os.environ.get("NCA_MODEL_DIR") or str(ROOT / "artifacts" / "model"),
             os.environ.get("NCA_MODEL_BASE_URL") or _secret("NCA_MODEL_BASE_URL") or "",
+            os.environ.get("NCA_MODEL_CACHE") or str(ROOT / ".model_cache"),
         )
         load_error = None
     except Exception as exc:  # shown in the UI instead of crashing the app

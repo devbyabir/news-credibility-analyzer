@@ -29,6 +29,7 @@ Environment variables:
 |---|---|---|
 | `NCA_MODEL_DIR` | `artifacts/model` | Folder containing `model.joblib` and `metadata.json` |
 | `NCA_MODEL_BASE_URL` | `base_url` in `deploy/streamlit/model_source.json` | Streamlit only: HTTPS folder to download the model from when `NCA_MODEL_DIR` has no model |
+| `NCA_MODEL_CACHE` | `.model_cache/` | Streamlit only: where downloaded, verified model files are kept |
 | `GRADIO_SERVER_NAME` | `127.0.0.1` | Gradio only: use `0.0.0.0` inside a container |
 | `GRADIO_SERVER_PORT` | `7860` | Gradio only: port |
 
