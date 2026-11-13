@@ -2,7 +2,7 @@
 
 Usage:
     python -m nca.data download            # fetch the pinned CSV (~305 MB)
-    python -m nca.data audit               # write reports/data_audit.json
+    python -m nca.data audit               # write reports/robust/data_audit.json
 
 Policy (documented in docs/DATA.md):
 1. Rows with blank text or a label outside {0, 1} are dropped.
@@ -315,7 +315,7 @@ def main(argv: list[str] | None = None) -> None:
     a.add_argument("--raw", type=Path, default=DEFAULT_RAW_PATH)
     a.add_argument("--conflict-threshold", type=float, default=0.8)
     a.add_argument("--group-threshold", type=float, default=0.5)
-    a.add_argument("--out", type=Path, default=PROJECT_ROOT / "reports" / "data_audit.json")
+    a.add_argument("--out", type=Path, default=PROJECT_ROOT / "reports" / "robust" / "data_audit.json")
     args = parser.parse_args(argv)
 
     if args.cmd == "download":

@@ -26,7 +26,7 @@ Built a leakage-free Bangla news-text classifier on BanFakeNews-2.0 (61.6k artic
 - Found that the first model relied on collection artifacts (years, months, bylines, COVID-era
   words). Masked them and documented the residual source bias instead of reporting the higher score.
 - Shipped Streamlit and Gradio web demos with uncertainty bands, per-word explanations and input validation,
-  plus 41 pytest tests, CI and deployment packaging for Streamlit Cloud and Hugging Face Spaces.
+  plus 49 pytest tests, CI and deployment packaging for Streamlit Cloud and Hugging Face Spaces.
 
 ## Links
 - Code: `https://github.com/<your-github-username>/news-credibility-analyzer`
