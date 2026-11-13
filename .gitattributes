@@ -3,3 +3,6 @@
 *.jpg binary
 *.gz binary
 *.ipynb text eol=lf
+
+# Keep the archived 2025 notebook out of GitHub language statistics (the project is Python).
+legacy/** linguist-vendored
