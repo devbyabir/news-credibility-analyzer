@@ -20,7 +20,7 @@ No BanglaBERT benchmark numbers are claimed anywhere in this repository.
 1. Open a new Colab notebook and select **Runtime → Change runtime type → T4 GPU**.
 2. Run:
    ```bash
-   !git clone https://github.com/<your-github-username>/news-credibility-analyzer.git
+   !git clone https://github.com/devbyabir/news-credibility-analyzer.git
    %cd news-credibility-analyzer
    !pip install -q -r requirements.txt -e ".[finetune]"
    !python -m nca.data download

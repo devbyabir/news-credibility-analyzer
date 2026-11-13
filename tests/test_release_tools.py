@@ -1,4 +1,3 @@
-import shutil
 from pathlib import Path
 
 import pytest
@@ -19,16 +18,20 @@ def _load():
 
 def test_username_helper_replaces_only_publishing_files(tmp_path):
     mod = _load()
-    for rel in mod.TARGETS:
+    ph = mod.PLACEHOLDER
+    for rel in mod.TARGETS:  # synthetic copies, independent of whether the repo is already filled in
         (tmp_path / rel).parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(ROOT / rel, tmp_path / rel)
+        (tmp_path / rel).write_text(
+            f"see https://github.com/{ph}/news-credibility-analyzer", encoding="utf-8"
+        )
+    (tmp_path / "docs" / "DEPLOYMENT.md").write_text(f"instructions keep {ph}", encoding="utf-8")
     dry = mod.replace_username("octo-cat", root=tmp_path)
-    assert dry["deploy/streamlit/model_source.json"] >= 1 and dry["README.md"] >= 2
-    assert mod.PLACEHOLDER in (tmp_path / "README.md").read_text(encoding="utf-8")  # dry run wrote nothing
+    assert all(n == 1 for n in dry.values())
+    assert ph in (tmp_path / "README.md").read_text(encoding="utf-8")  # dry run wrote nothing
     mod.replace_username("octo-cat", root=tmp_path, write=True)
-    src = (tmp_path / "deploy/streamlit/model_source.json").read_text(encoding="utf-8")
-    assert "https://github.com/octo-cat/news-credibility-analyzer/releases/download/v1.0.0" in src
-    assert all(mod.PLACEHOLDER not in (tmp_path / rel).read_text(encoding="utf-8") for rel in mod.TARGETS)
+    for rel in mod.TARGETS:
+        assert "github.com/octo-cat/news-credibility-analyzer" in (tmp_path / rel).read_text(encoding="utf-8")
+    assert ph in (tmp_path / "docs" / "DEPLOYMENT.md").read_text(encoding="utf-8")  # not a target
 
 
 @pytest.mark.parametrize("bad", ["", "-x", "a b", "x" * 40, "a--b", "../etc"])

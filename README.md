@@ -1,6 +1,6 @@
 # News Credibility Analyzer
 
-[![CI](https://github.com/<your-github-username>/news-credibility-analyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-github-username>/news-credibility-analyzer/actions/workflows/ci.yml)
+[![CI](https://github.com/devbyabir/news-credibility-analyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/devbyabir/news-credibility-analyzer/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.12%2B-blue)
 ![License: MIT](https://img.shields.io/badge/code%20license-MIT-green)
 
@@ -123,7 +123,7 @@ artifacts/model/model.joblib + metadata.json ──► nca.predict ──► app
 Requires Python 3.12+ (tested on 3.14 locally; CI uses 3.12 and 3.13).
 
 ```bash
-git clone https://github.com/<your-github-username>/news-credibility-analyzer.git
+git clone https://github.com/devbyabir/news-credibility-analyzer.git
 cd news-credibility-analyzer
 python -m venv .venv
 # Windows: .venv\Scripts\activate    macOS/Linux: source .venv/bin/activate

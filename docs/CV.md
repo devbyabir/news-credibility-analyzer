@@ -29,7 +29,7 @@ Built a leakage-free Bangla news-text classifier on BanFakeNews-2.0 (61.6k artic
   plus 50 pytest tests, CI and deployment packaging for Streamlit Cloud and Hugging Face Spaces.
 
 ## Links
-- Code: `https://github.com/<your-github-username>/news-credibility-analyzer`
+- Code: `https://github.com/devbyabir/news-credibility-analyzer`
 - Live demo: `https://<your-subdomain>.streamlit.app` or
   `https://huggingface.co/spaces/<your-hf-username>/news-credibility-analyzer` (only after you deploy it)
 
