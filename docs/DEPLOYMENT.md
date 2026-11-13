@@ -7,6 +7,8 @@ There are two web front-ends for the same 7.0 MB scikit-learn model. Both run on
 | Streamlit | `deploy/streamlit/streamlit_app.py` | **Streamlit Community Cloud** (primary route, §2) | Free for public apps |
 | Gradio | `app.py` | Hugging Face Spaces (optional, §3) | Needs a **paid** Hugging Face plan for a CPU Gradio Space (see §3) |
 
+**Live deployment of v1.0.0:** <https://bangla-news-credibility-analyzer.streamlit.app>
+
 No GPU or API key is needed. Every hosting option needs your own accounts, and publishing is
 done by you, not by this repository's tooling.
 
@@ -86,7 +88,8 @@ Sources:
    - Repository: `<your-github-username>/news-credibility-analyzer`
    - Branch: `main`
    - Main file path: `deploy/streamlit/streamlit_app.py`
-   - App URL: pick a free subdomain, for example `news-credibility-analyzer`
+   - App URL: pick a free subdomain. This project uses `bangla-news-credibility-analyzer`;
+     `news-credibility-analyzer` was already taken.
    - *Advanced settings* → Python **3.12**
 
    Deploy, then wait for the build to finish (the log is shown while it runs).

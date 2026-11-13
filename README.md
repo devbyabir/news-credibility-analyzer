@@ -11,7 +11,7 @@ drove the score, and runs as a small web demo.
 > **It is not a fact-checker.** The model looks at wording and style only. It cannot check claims,
 > sources or dates, and its output says nothing definitive about whether a story is true.
 
-**Live demo:** not yet deployed. It is ready for Streamlit Community Cloud (free, public apps); see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Replace this line with the public URL once it is live.
+**Live demo:** <https://bangla-news-credibility-analyzer.streamlit.app> (Streamlit Community Cloud; it may take a few seconds to wake after inactivity) · **Model release:** [v1.0.0](https://github.com/devbyabir/news-credibility-analyzer/releases/tag/v1.0.0)
 
 ![Streamlit demo screenshot](docs/assets/streamlit_demo.png)
 
