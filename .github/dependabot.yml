@@ -1,0 +1,15 @@
+# Weekly update PRs for pinned Python packages and GitHub Actions. Review each PR:
+# scikit-learn must stay at the version the published model was trained with.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directories: ["/", "/deploy/streamlit", "/deploy/huggingface"]
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: scikit-learn
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
