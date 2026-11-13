@@ -207,7 +207,7 @@ therefore invalid. This repository is the corrected rewrite.
 
 ## License and attribution
 
-- Code: MIT ([LICENSE](LICENSE)).
+- Code: MIT ([LICENSE](LICENSE)). Its scope is limited to the code; see [NOTICE.md](NOTICE.md).
 - Dataset: BanFakeNews-2.0 © its author, CC BY 4.0. It is not redistributed here. Models and
   excerpts derived from it carry this attribution.
 - Screenshots in `docs/assets/` were captured from this project's own demo. The demo's example
