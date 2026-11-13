@@ -71,10 +71,15 @@ Sources:
 
 ### Steps (you do these: they use your accounts)
 
+The official v1.0.0 deployment is already live, so these steps are only needed for a **fork** or a
+new release. For this repository, `base_url` already points to
+`https://github.com/devbyabir/news-credibility-analyzer/releases/download/v1.0.0`.
+
 1. **Push the code** to a public GitHub repository named `news-credibility-analyzer`.
    See `docs/RELEASE_CHECKLIST.md`, part A.
-2. **Set the download URL.** In `deploy/streamlit/model_source.json`, replace
-   `<your-github-username>` in `base_url` with your GitHub username. Commit and push.
+2. **Set the download URL (forks only).** In `deploy/streamlit/model_source.json`, change `base_url`
+   to your own repository's release folder, or run `python scripts/set_github_username.py YOUR_NAME --write`
+   on a copy that still has the placeholder. Commit and push.
 3. **Publish the model release.** On GitHub, open *Releases* → *Draft a new release* →
    *Choose a tag* → type `v1.0.0` → *Create new tag*.
    - Attach exactly these two files, keeping their names: `artifacts/model/model.joblib` and
@@ -102,7 +107,7 @@ Sources:
    portfolio.
 
 If the app shows *"The model could not be loaded"*, the message gives the reason. The usual causes:
-- the username placeholder is still in `model_source.json`;
+- `base_url` in `model_source.json` points to a repository or tag that does not exist;
 - the release or one of the two assets is missing;
 - the repository is private;
 - a checksum mismatch, because a different file was uploaded.
@@ -142,7 +147,7 @@ If you have a plan that allows a CPU Gradio Space:
    ```
    This creates `build/hf_space/` with `app.py`, the runtime part of `src/nca`, pinned
    `requirements.txt`, the Space card and the model files.
-3. In `build/hf_space/README.md`, replace `<your-github-username>`.
+3. Review `build/hf_space/README.md` (the Space card). It already links to this repository.
 4. Log in, create the Space and upload. These commands were checked against the `hf` CLI in
    `huggingface_hub` 2.4. Creation fails on a free account unless your plan allows it:
    ```bash

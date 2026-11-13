@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "news-credibility-analyzer"
 version = "1.0.0"
-description = "Bangla news credibility analyzer: a leakage-free text classifier trained on BanFakeNews-2.0, with a Gradio demo."
+description = "Bangla news-text classifier trained on BanFakeNews-2.0 with leakage-free evaluation, shortcut-cue analysis and Streamlit/Gradio demos. Estimates resemblance to fake/authentic training text; does not verify facts."
 readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"
 authors = [{ name = "Abir Ahmmed" }]
-keywords = ["bangla", "bengali", "nlp", "fake-news", "text-classification", "scikit-learn", "gradio"]
+keywords = ["bangla", "bengali", "nlp", "fake-news", "text-classification", "scikit-learn", "streamlit", "gradio"]
 dependencies = [
     "numpy>=2.0,<3",
     "pandas>=2.2,<4",
@@ -20,6 +20,12 @@ dependencies = [
     "matplotlib>=3.8,<4",
     "huggingface_hub>=0.25,<3",
 ]
+
+[project.urls]
+Homepage = "https://github.com/devbyabir/news-credibility-analyzer"
+Demo = "https://bangla-news-credibility-analyzer.streamlit.app"
+Release = "https://github.com/devbyabir/news-credibility-analyzer/releases/tag/v1.0.0"
+Issues = "https://github.com/devbyabir/news-credibility-analyzer/issues"
 
 [project.optional-dependencies]
 app = ["gradio>=5,<7", "streamlit>=1.40,<2"]

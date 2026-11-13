@@ -10,6 +10,9 @@
 - **Artifact:** `artifacts/model/model.joblib` (7.0 MB) and `metadata.json`, produced by
   `python -m nca.train --config configs/robust.json`. Requires scikit-learn 1.9.1.
 - **Author:** Abir Ahmmed. Code license: MIT.
+- **Download:** release [v1.0.0](https://github.com/devbyabir/news-credibility-analyzer/releases/tag/v1.0.0)
+  (SHA-256 values in `deploy/streamlit/model_source.json`).
+- **Live demo:** <https://bangla-news-credibility-analyzer.streamlit.app>
 
 ## Intended use
 - Demonstrating and teaching text classification, leakage-free evaluation and dataset-artifact

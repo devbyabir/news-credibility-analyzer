@@ -2,6 +2,15 @@
 
 There are three separate milestones. Tick them in order; finishing one does not mean the next is done.
 
+> **Status of v1.0.0 (13 Nov 2026): all three milestones are complete.**
+> - A: <https://github.com/devbyabir/news-credibility-analyzer>, CI passing on Python 3.12 and 3.13.
+> - B: release [`v1.0.0`](https://github.com/devbyabir/news-credibility-analyzer/releases/tag/v1.0.0)
+>   holds `model.joblib` and `metadata.json`, and both match the checksums below.
+> - C: <https://bangla-news-credibility-analyzer.streamlit.app>, smoke-tested logged out.
+>
+> The boxes below are left unticked as a reusable template for the next release. Replace
+> `YOUR_NAME` with `devbyabir` (or your fork's owner).
+
 | Milestone | Meaning | Section |
 |---|---|---|
 | **A. Code on GitHub** | The repository is pushed and CI passes. | A |
