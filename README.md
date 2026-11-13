@@ -30,7 +30,7 @@ drove the score, and runs as a small web demo.
 - **Honest product.** Uncertainty bands with held-out fake rates, per-word explanations, and
   explicit handling of empty, oversized, non-Bangla and short input.
 - **Reproducible.** Pinned dependencies, a checksum-verified dataset download, fixed seeds, a saved
-  split manifest, 49 tests and CI.
+  split manifest, 50 tests and CI.
 
 ## Results (held-out test set)
 

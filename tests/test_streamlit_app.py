@@ -37,3 +37,15 @@ def test_streamlit_app_reports_missing_model(monkeypatch, tmp_path):
     at = AppTest.from_file(APP, default_timeout=60).run()
     assert not at.exception
     assert any("could not be loaded" in e.value for e in at.error)
+
+
+def test_streamlit_app_rejects_excessive_input_explicitly(monkeypatch, tiny_model_dir):
+    from nca.predict import MAX_CHARS
+
+    monkeypatch.setenv("NCA_MODEL_DIR", str(tiny_model_dir))
+    at = AppTest.from_file(APP, default_timeout=60).run()
+    at.text_area(key="text").input("ক" * (MAX_CHARS + 5000)).run()
+    next(b for b in at.button if b.label == "Analyze").click().run()
+    assert not at.exception
+    assert any("too long" in e.value for e in at.error)
+    assert "Model assessment" not in _markdown(at)

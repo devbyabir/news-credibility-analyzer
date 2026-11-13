@@ -129,11 +129,13 @@ def main() -> None:
     st.session_state.setdefault("text", "")
     left, right = st.columns([6, 5], gap="large")
     with left:
+        # No max_chars: the widget would silently cut long pastes. Length is checked by
+        # nca.predict.validate_text, which shows an explicit "too long" message instead.
         st.text_area(
             "Bangla news text",
             key="text",
             height=300,
-            max_chars=MAX_CHARS,
+            help=f"Paste a full article (up to {MAX_CHARS:,} characters).",
             placeholder="এখানে বাংলা সংবাদের পূর্ণ লেখা পেস্ট করুন…",
         )
         b1, b2 = st.columns(2)
