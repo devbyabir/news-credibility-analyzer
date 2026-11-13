@@ -39,3 +39,13 @@ def test_app_survives_missing_model(monkeypatch, tmp_path):
 def test_app_escapes_html(app_module):
     out = app_module.analyze("<script>alert(1)</script> " + app_module.EXAMPLES[0])
     assert "<script>" not in out
+
+
+def test_app_does_not_start_gradio_telemetry_threads(app_module):
+    # Gradio's version check and analytics run in non-daemon threads that make network calls;
+    # on restricted networks they stalled test runs and process exit. The demo disables them.
+    import threading
+
+    assert app_module.demo.analytics_enabled is False
+    names = {t.name for t in threading.enumerate()}
+    assert not any("version_check" in n or "analytics" in n for n in names)

@@ -114,7 +114,9 @@ def _about_md() -> str:
 
 
 def build_demo() -> gr.Blocks:
-    with gr.Blocks(title=TITLE) as demo:
+    # analytics_enabled=False: no telemetry, and no background version-check / analytics threads
+    # (they block startup and process exit on restricted networks, e.g. in CI or sandboxes).
+    with gr.Blocks(title=TITLE, analytics_enabled=False) as demo:
         gr.HTML(f'<div id="hdr"><h1>📰 {TITLE}</h1><p>{SUBTITLE}</p></div>')
         gr.HTML(f'<div class="notice">{NOTICE}</div>')
         with gr.Row(equal_height=False):
