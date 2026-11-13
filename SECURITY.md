@@ -22,5 +22,5 @@ You should get a reply within 7 days.
   escaped. Nothing a visitor types is stored or logged by the app.
 - **Secrets.** The project needs no API keys. An optional `NCA_MODEL_BASE_URL` may be set as a
   Streamlit secret; never commit credentials.
-- **Dependencies.** Versions are pinned and checked with `pip-audit`. Dependabot proposes weekly
-  updates; scikit-learn is held at the version the model was trained with.
+- **Dependencies.** Versions are pinned and checked with `pip-audit`. Dependabot security alerts are
+  enabled. scikit-learn must stay at the version the model was trained with (1.9.1).
