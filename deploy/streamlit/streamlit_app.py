@@ -140,11 +140,11 @@ def main() -> None:
             placeholder="এখানে বাংলা সংবাদের পূর্ণ লেখা পেস্ট করুন…",
         )
         b1, b2 = st.columns(2)
-        analyze = b1.button("Analyze", type="primary", use_container_width=True)
-        b2.button("Clear", use_container_width=True, on_click=_set_text, args=("",))
+        analyze = b1.button("Analyze", type="primary", width="stretch")
+        b2.button("Clear", width="stretch", on_click=_set_text, args=("",))
         st.caption("Illustrative examples (written for this demo, not real news)")
         for i, ex in enumerate(EXAMPLES):
-            st.button(ex[:60] + "…", key=f"ex{i}", on_click=_set_text, args=(ex,), use_container_width=True)
+            st.button(ex[:60] + "…", key=f"ex{i}", on_click=_set_text, args=(ex,), width="stretch")
 
     with right:
         if load_error:
