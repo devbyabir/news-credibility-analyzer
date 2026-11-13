@@ -42,5 +42,7 @@ Caveats:
 - By default the script uses the same robust preprocessing as the deployed model
   (`--preprocessor robust`), which masks dates, bylines and COVID-era words. Use
   `--preprocessor standard` to compare against the unmasked baseline instead.
-- A transformer would raise hosting cost on the free Space tier: about 0.5 GB of weights, more RAM
-  and slower CPU inference. Switch to it only if it is clearly better on the fake class.
+- A transformer would make hosting heavier: about 0.5 GB of weights, more RAM and roughly 87 ms vs
+  1.2 ms per article on CPU. Streamlit Community Cloud allows up to about 2.7 GB of memory per app,
+  so it may still fit, but this is untested. A CPU Gradio Space on Hugging Face needs a paid plan
+  (see docs/DEPLOYMENT.md §3). Switch only if it is clearly better on the fake class.

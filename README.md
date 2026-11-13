@@ -11,7 +11,7 @@ drove the score, and runs as a small web demo.
 > **It is not a fact-checker.** The model looks at wording and style only. It cannot check claims,
 > sources or dates, and its output says nothing definitive about whether a story is true.
 
-**Live demo:** not yet deployed. It is ready for Streamlit Community Cloud or Hugging Face Spaces; see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Replace this line with the public URL once it is live.
+**Live demo:** not yet deployed. It is ready for Streamlit Community Cloud (free, public apps); see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). Replace this line with the public URL once it is live.
 
 ![Streamlit demo screenshot](docs/assets/streamlit_demo.png)
 
@@ -30,7 +30,7 @@ drove the score, and runs as a small web demo.
 - **Honest product.** Uncertainty bands with held-out fake rates, per-word explanations, and
   explicit handling of empty, oversized, non-Bangla and short input.
 - **Reproducible.** Pinned dependencies, a checksum-verified dataset download, fixed seeds, a saved
-  split manifest, 30+ tests and CI.
+  split manifest, 49 tests and CI.
 
 ## Results (held-out test set)
 
@@ -112,7 +112,7 @@ artifacts/model/model.joblib + metadata.json ──► nca.predict ──► app
 | `src/nca/predict.py` | Validation, scoring, explanations (CLI + library) |
 | `src/nca/finetune.py` | Optional BanglaBERT fine-tuning (GPU) |
 | `deploy/streamlit/streamlit_app.py` | Streamlit web demo (Streamlit Community Cloud) |
-| `app.py` | Gradio web demo (Hugging Face Spaces) |
+| `app.py` | Gradio web demo (optional Hugging Face Space, needs a paid plan for CPU) |
 | `src/nca/content.py`, `src/nca/remote.py` | Shared demo text; checksum-verified model download for hosted demos |
 | `configs/` | `baseline.json` (standard text) and `robust.json` (deployed) |
 | `reports/` | Committed audit, CV, test metrics, figures, failure cases |

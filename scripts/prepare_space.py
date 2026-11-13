@@ -2,8 +2,10 @@
 
     python scripts/prepare_space.py
     # then, after `hf auth login` (see docs/DEPLOYMENT.md):
-    hf repos create <your-username>/news-credibility-analyzer --repo-type space --space-sdk gradio --public
-    hf upload <your-username>/news-credibility-analyzer build/hf_space . --repo-type space
+    hf repos create <your-hf-username>/news-credibility-analyzer --repo-type space --space-sdk gradio --public
+    hf upload <your-hf-username>/news-credibility-analyzer build/hf_space . --repo-type space
+
+Note: creating a CPU Gradio Space requires a paid Hugging Face plan (see docs/DEPLOYMENT.md §3).
 
 The Space folder contains only what the demo needs at runtime: app.py, the
 `nca` package, pinned runtime requirements, the Space card, and the trained
